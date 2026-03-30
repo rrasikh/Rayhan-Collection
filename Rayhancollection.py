@@ -1,16 +1,12 @@
 from flask import Flask, render_template
+import os
 
 app = Flask(__name__)
 
 @app.route('/')
 def home():
-    # Example data for your collection
-    products = [
-        {"name": "Premium Uzbek Coat", "description": "Traditional embroidery with a modern cut."},
-        {"name": "Silk Chiffon Hijab", "description": "Lightweight, breathable, and elegant."},
-        {"name": "Handcrafted Ikat Outerwear", "description": "Authentic patterns from the heart of Uzbekistan."}
-    ]
-    return render_template('index.html', products=products)
+    return render_template('index.html')
 
-if __name__ == '__main__':
-    app.run(debug=True)
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host='0.0.0.0', port=port)
